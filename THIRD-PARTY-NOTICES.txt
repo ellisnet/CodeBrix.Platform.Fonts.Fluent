@@ -1,0 +1,84 @@
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+
+CodeBrix.Platform.Fonts.Fluent is a CodeBrix-family redistribution of the
+Uno Platform Fluent icon font, packaged as a .NET 10 NuGet library. The
+package incorporates third-party material from a single upstream source:
+
+  1. Uno.Fonts.Fluent 2.8.1 (Apache-2.0) — both the original packaging
+     shape (the `.props` MSBuild logic and the `.uprimarker` mechanism)
+     AND the `uno-fluentui-assets.ttf` font binary itself, designed and
+     originally published by Uno Platform Inc.
+
+This material is reproduced under the terms of the Apache License,
+Version 2.0, the same license under which Uno Platform publishes it. The
+full Apache License Version 2.0 text is reproduced in the LICENSE file at
+the root of this repository.
+
+================================================================================
+
+1. Uno.Fonts.Fluent 2.8.1
+   ----------------------
+   Project URL:    https://github.com/unoplatform/uno.fonts
+   Package:        https://www.nuget.org/packages/Uno.Fonts.Fluent/2.8.1
+   Copyright:      Copyright (C) 2015-2023 Uno Platform Inc. - all rights reserved
+   License:        Apache License, Version 2.0
+   Description:    Uno Platform Fluent Font (Windows 11 iconography)
+
+   Files derived from this upstream project (and adapted for CodeBrix family
+   conventions and the .NET 10 target):
+
+     - src/CodeBrix.Platform.Fonts.Fluent/buildTransitive/net10.0/CodeBrix.Platform.Fonts.Fluent.ApacheLicenseForever.props
+         (MSBuild .props, renamed and retargeted; on-disk filename matches
+          the NuGet PackageId so consumer auto-import works correctly per
+          NuGet convention NU5129; was previously
+          buildTransitive/Uno.Fonts.Fluent.props)
+     - src/CodeBrix.Platform.Fonts.Fluent/CodeBrix.Platform.Fonts.Fluent.uprimarker
+         (empty marker file, renamed; was previously
+          lib/netstandard1.0/Uno.Fonts.Fluent.uprimarker)
+
+   Font binary redistributed from this upstream project (bit-for-bit
+   identical to the copy that Uno.Fonts.Fluent 2.8.1 shipped under
+   lib/netstandard1.0/Uno.Fonts.Fluent/Fonts/):
+
+     - src/CodeBrix.Platform.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf
+         (the Uno Platform Fluent / Windows 11 symbol icon font)
+
+   Modifications made during repackaging:
+     - Target framework changed from netstandard1.0 to net10.0.
+     - Assembly name, root namespace, package id, and content-folder name
+       set to `CodeBrix.Platform.Fonts.Fluent`.
+     - In the .props file, the `UnoPlatformDefaultSymbolsFontFamily`
+       value was rewritten from `ms-appx:///Uno.Fonts.Fluent/Fonts/...`
+       to `ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/...` so it
+       points at this package's renamed content folder. The
+       `UnoFontsFluentDisableImport` opt-out condition is preserved
+       verbatim so existing consumer overrides keep working.
+     - No modification was made to the `uno-fluentui-assets.ttf` binary;
+       it is redistributed byte-for-byte.
+     - Standard CodeBrix-family scaffolding added (8 AI-pointer files,
+       AGENT-README.txt, README.md, .slnx, InternalsVisibleTo.cs).
+
+================================================================================
+
+License compatibility statement
+-------------------------------
+
+The combined work is published under SPDX expression `Apache-2.0`. Both the
+wrapper code / packaging metadata and the redistributed Uno Platform Fluent
+font are under the Apache License, Version 2.0, so there is no cross-license
+incompatibility. The Apache-2.0 NOTICE / attribution requirements are
+satisfied by recording the Uno Platform copyright above and in the library
+csproj `<Copyright>` element.
+
+Jeremy Ellis and contributors license the CodeBrix.Platform.Fonts.Fluent
+project to you under the terms set forth in the LICENSE file (Apache-2.0),
+located at the root of this repository.
+
+If you have any questions about any third-party code or assets referenced
+here, or if you believe that any third-party material has been included in
+CodeBrix.Platform.Fonts.Fluent in error, please open a new issue at:
+https://github.com/ellisnet/CodeBrix.Platform.Fonts.Fluent/issues
+
+================================================================================
+
+END OF THIRD-PARTY SOFTWARE NOTICES AND INFORMATION

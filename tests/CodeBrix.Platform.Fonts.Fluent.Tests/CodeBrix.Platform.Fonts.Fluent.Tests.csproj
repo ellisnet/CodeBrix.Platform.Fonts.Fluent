@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="xunit.v3" Version="3.2.2" />
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="SilverAssertions.ApacheLicenseForever" Version="1.0.164.180" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CodeBrix.Platform.Fonts.Fluent\CodeBrix.Platform.Fonts.Fluent.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\src\CodeBrix.Platform.Fonts.Fluent\Fonts\*.ttf" CopyToOutputDirectory="PreserveNewest" Link="TestAssets\Fonts\%(FileName)%(Extension)" />
+    <None Include="..\..\src\CodeBrix.Platform.Fonts.Fluent\CodeBrix.Platform.Fonts.Fluent.uprimarker" CopyToOutputDirectory="PreserveNewest" Link="TestAssets\CodeBrix.Platform.Fonts.Fluent.uprimarker" />
+    <None Include="..\..\src\CodeBrix.Platform.Fonts.Fluent\buildTransitive\net10.0\CodeBrix.Platform.Fonts.Fluent.ApacheLicenseForever.props" CopyToOutputDirectory="PreserveNewest" Link="TestAssets\buildTransitive\net10.0\CodeBrix.Platform.Fonts.Fluent.ApacheLicenseForever.props" />
+  </ItemGroup>
+
+</Project>
