@@ -11,7 +11,7 @@ Please update your C#/.NET code and projects to the latest LTS version of Micros
 ## CodeBrix.Platform.Fonts.Fluent supports:
 
 * The Uno Platform Fluent icon font (`uno-fluentui-assets.ttf`) — the Windows 11 Fluent symbol set used for `SymbolIcon` / `FontIcon` glyphs.
-* A `buildTransitive` MSBuild `.props` file that sets the `UnoPlatformDefaultSymbolsFontFamily` property to this package's bundled font, so a CodeBrix.Platform-forked Uno app picks it up as the default symbols font automatically.
+* A `buildTransitive` MSBuild `.props` file that sets the `CodeBrixPlatformDefaultSymbolsFontFamily` property to this package's bundled font, so a CodeBrix.Platform app picks it up as the default symbols font automatically.
 * The Uno `.uprimarker` file (renamed) so Uno-fork build pipelines discover the package as a UPRI-bearing font asset library and copy the font into the app at build time.
 
 ## Sample Code

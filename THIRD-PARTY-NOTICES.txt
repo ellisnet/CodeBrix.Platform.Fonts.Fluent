@@ -47,12 +47,17 @@ the root of this repository.
      - Target framework changed from netstandard1.0 to net10.0.
      - Assembly name, root namespace, package id, and content-folder name
        set to `CodeBrix.Platform.Fonts.Fluent`.
-     - In the .props file, the `UnoPlatformDefaultSymbolsFontFamily`
-       value was rewritten from `ms-appx:///Uno.Fonts.Fluent/Fonts/...`
-       to `ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/...` so it
-       points at this package's renamed content folder. The
-       `UnoFontsFluentDisableImport` opt-out condition is preserved
-       verbatim so existing consumer overrides keep working.
+     - In the .props file, the property the package sets was renamed from
+       the upstream `UnoPlatformDefaultSymbolsFontFamily` to
+       `CodeBrixPlatformDefaultSymbolsFontFamily` -- the property name the
+       CodeBrix.Platform XAML source generator actually reads (the fork
+       renamed it). Its value was rewritten from
+       `ms-appx:///Uno.Fonts.Fluent/Fonts/...` to
+       `ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/...` so it points at
+       this package's renamed content folder. The opt-out condition was
+       likewise renamed from `UnoFontsFluentDisableImport` to
+       `CodeBrixFontsFluentDisableImport`. The font file itself keeps its
+       original Uno-published name, `uno-fluentui-assets.ttf`.
      - No modification was made to the `uno-fluentui-assets.ttf` binary;
        it is redistributed byte-for-byte.
      - Standard CodeBrix-family scaffolding added (8 AI-pointer files,

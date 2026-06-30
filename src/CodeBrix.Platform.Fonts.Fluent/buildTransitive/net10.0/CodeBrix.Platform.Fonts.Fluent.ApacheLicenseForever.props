@@ -3,14 +3,18 @@
     <!-- was previously: nuget/Fluent/buildTransitive/Uno.Fonts.Fluent.props -->
     <!--
       Sets the default symbols (icon) font family for CodeBrix.Platform-forked
-      Uno apps. The ms-appx path is rooted at this package's content folder
-      (lib/net10.0/CodeBrix.Platform.Fonts.Fluent/Fonts/), which the Uno asset
-      pipeline registers via the sibling .uprimarker file. The path was
-      renamed from the upstream Uno.Fonts.Fluent content folder to the
-      CodeBrix content folder. The UnoFontsFluentDisableImport opt-out is
-      preserved verbatim so existing consumer overrides keep working.
+      apps. The ms-appx path is rooted at this package's content folder
+      (lib/net10.0/CodeBrix.Platform.Fonts.Fluent/Fonts/), which the
+      CodeBrix.Platform asset pipeline registers via the sibling .uprimarker
+      file. The property name is CodeBrixPlatformDefaultSymbolsFontFamily --
+      the property the CodeBrix.Platform XAML source generator actually reads
+      (the upstream Uno equivalent was UnoPlatformDefaultSymbolsFontFamily,
+      which the fork renamed). The font file itself keeps its original
+      Uno-published name, uno-fluentui-assets.ttf, and its Apache-2.0
+      attribution. The CodeBrixFontsFluentDisableImport opt-out lets a consumer
+      suppress this default.
     -->
-    <PropertyGroup Condition="'$(UnoFontsFluentDisableImport)'==''">
-        <UnoPlatformDefaultSymbolsFontFamily>ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf</UnoPlatformDefaultSymbolsFontFamily>
+    <PropertyGroup Condition="'$(CodeBrixFontsFluentDisableImport)'==''">
+        <CodeBrixPlatformDefaultSymbolsFontFamily>ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf</CodeBrixPlatformDefaultSymbolsFontFamily>
     </PropertyGroup>
 </Project>

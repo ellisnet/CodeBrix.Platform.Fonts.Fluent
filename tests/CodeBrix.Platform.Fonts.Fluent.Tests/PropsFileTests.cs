@@ -17,7 +17,7 @@ public class PropsFileTests
         var content = File.ReadAllText(TestAssetPaths.PropsFilePath);
 
         //Assert
-        content.Should().Contain("<UnoPlatformDefaultSymbolsFontFamily>");
+        content.Should().Contain("<CodeBrixPlatformDefaultSymbolsFontFamily>");
     }
 
     [Fact]
@@ -41,12 +41,24 @@ public class PropsFileTests
     }
 
     [Fact]
-    public void Props_file_preserves_disable_import_opt_out()
+    public void Props_file_provides_disable_import_opt_out()
     {
         //Arrange
         var content = File.ReadAllText(TestAssetPaths.PropsFilePath);
 
         //Assert
-        content.Should().Contain("$(UnoFontsFluentDisableImport)");
+        content.Should().Contain("$(CodeBrixFontsFluentDisableImport)");
+    }
+
+    [Fact]
+    public void Props_file_uses_the_codebrix_symbols_font_property()
+    {
+        //Arrange
+        var content = File.ReadAllText(TestAssetPaths.PropsFilePath);
+
+        //Assert
+        // The CodeBrix.Platform XAML source generator reads
+        // CodeBrixPlatformDefaultSymbolsFontFamily, not the upstream Uno name.
+        content.Should().NotContain("<UnoPlatformDefaultSymbolsFontFamily>");
     }
 }

@@ -24,9 +24,9 @@ file. The interesting payload lives in:
   - A `.uprimarker` file that Uno-fork build pipelines use to discover
     UPRI-bearing font asset packages.
   - An MSBuild `.props` file under buildTransitive/net10.0/ that sets the
-    `UnoPlatformDefaultSymbolsFontFamily` property to this package's
-    bundled font, so a CodeBrix.Platform-forked Uno app picks it up as
-    the default symbols font automatically.
+    `CodeBrixPlatformDefaultSymbolsFontFamily` property to this package's
+    bundled font, so a CodeBrix.Platform app picks it up as the default
+    symbols font automatically.
 
 Unlike its sibling CodeBrix.Platform.Fonts.OpenSans (which ships 37
 weight/style/stretch font files plus a `.ttf.manifest` and a font-pruning
@@ -91,12 +91,16 @@ through:
      auto-import convention (NU5129) picks it up in consumer builds.
      It sets:
 
-       <UnoPlatformDefaultSymbolsFontFamily>
+       <CodeBrixPlatformDefaultSymbolsFontFamily>
          ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf
-       </UnoPlatformDefaultSymbolsFontFamily>
+       </CodeBrixPlatformDefaultSymbolsFontFamily>
 
-     guarded by `Condition="'$(UnoFontsFluentDisableImport)'==''"` so a
-     consumer can opt out by setting UnoFontsFluentDisableImport.
+     guarded by `Condition="'$(CodeBrixFontsFluentDisableImport)'==''"` so a
+     consumer can opt out by setting CodeBrixFontsFluentDisableImport.
+     (CodeBrixPlatformDefaultSymbolsFontFamily is the property the
+     CodeBrix.Platform XAML source generator actually reads; the upstream
+     Uno names were UnoPlatformDefaultSymbolsFontFamily /
+     UnoFontsFluentDisableImport, which the fork renamed.)
 
 If a future iteration exposes a managed API (e.g. typed accessors that
 return the font stream/path for non-Uno consumers), it will live under
@@ -210,10 +214,11 @@ The test suite covers:
     `CodeBrix.Platform.Fonts.Fluent`, targets .NET 10, can be loaded by
     name, and exports no public types (metadata-only).
   * .props file: that the buildTransitive .props file is present next to
-    the test assembly, that it sets `UnoPlatformDefaultSymbolsFontFamily`
+    the test assembly, that it sets `CodeBrixPlatformDefaultSymbolsFontFamily`
     to the `ms-appx:///CodeBrix.Platform.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf`
-    path, and that it carries no residual upstream `ms-appx:///Uno.Fonts.Fluent`
-    path token (catches incomplete rename regressions).
+    path, that it no longer uses the upstream Uno property name, and that it
+    carries no residual upstream `ms-appx:///Uno.Fonts.Fluent` path token
+    (catches incomplete rename regressions).
 
 
 PROVENANCE OF PORTED FILES
@@ -237,9 +242,16 @@ KNOWN GOTCHAS
     but they have to do that lookup themselves.
 
   * The `.props` sets the symbols font family only when
-    `UnoFontsFluentDisableImport` is empty. A consumer that sets that
+    `CodeBrixFontsFluentDisableImport` is empty. A consumer that sets that
     property opts out of the automatic default and must supply its own
     symbols font.
+
+  * The property the package sets is `CodeBrixPlatformDefaultSymbolsFontFamily`
+    — the name the CodeBrix.Platform XAML source generator reads. The
+    upstream Uno package set `UnoPlatformDefaultSymbolsFontFamily`; the fork
+    renamed the property, so a .props that set the old name would silently
+    fail to register the default symbols font. Keep this in sync if the fork
+    renames the property again.
 
   * Because this package uses the CodeBrix content path rather than the
     upstream `Uno.Fonts.Fluent` path, a CodeBrix.Platform fork that swaps
