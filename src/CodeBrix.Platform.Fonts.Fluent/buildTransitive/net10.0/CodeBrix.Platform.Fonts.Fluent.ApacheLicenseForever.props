@@ -6,7 +6,7 @@
       apps. The ms-appx path is rooted at this package's content folder
       (lib/net10.0/CodeBrix.Platform.Fonts.Fluent/Fonts/), which the
       CodeBrix.Platform asset pipeline registers via the sibling .uprimarker
-      file. The property name is CodeBrixPlatformDefaultSymbolsFontFamily --
+      file. The property name is CodeBrixPlatformDefaultSymbolsFontFamily,
       the property the CodeBrix.Platform XAML source generator actually reads
       (the upstream Uno equivalent was UnoPlatformDefaultSymbolsFontFamily,
       which the fork renamed). The font file itself keeps its original
