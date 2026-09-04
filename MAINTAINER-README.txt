@@ -61,10 +61,15 @@ The eight AI-agent pointer files (AGENTS.md, CLAUDE.md, .clinerules,
 .github/copilot-instructions.md, .junie/guidelines.md) are maintained
 centrally across the CodeBrix family. Do not hand-edit them here.
 
-The .slnx carries a "Solution Items" folder (AGENT-README.txt, the icon,
-LICENSE, README.md, THIRD-PARTY-NOTICES.txt), a "Solution Items/src" folder
-holding the .props so it is editable from the IDE, a "Tests" folder holding
-the test project, and the library project at the root.
+The .slnx carries a "Solution Items" folder (.gitignore, AGENT-README.txt,
+EXTRAS-README.txt, global.json, icon-codebrix-128.png, LICENSE,
+MAINTAINER-README.txt, README-INDEX.txt, README.md,
+THIRD-PARTY-NOTICES.txt), a "Solution Items/src" folder holding the .props so
+it is editable from the IDE, a "Tests" folder holding the test project, and
+the library project at the root.
+
+global.json at the repository root selects the Microsoft.Testing.Platform
+test runner. It does NOT pin an SDK version. See TESTING below.
 
 
 BUILDING
@@ -88,7 +93,16 @@ TESTING
 
     dotnet test CodeBrix.Platform.Fonts.Fluent.slnx
 
-The test project is xUnit v3 with SilverAssertions and coverlet.collector.
+The test runner is Microsoft.Testing.Platform, selected by global.json at the
+repository root:
+
+    { "test": { "runner": "Microsoft.Testing.Platform" } }
+
+That file pins no SDK version, so the newest installed .NET 10 SDK is still
+used. Keep it committed -- without it, `dotnet test` falls back to the older
+VSTest bridge.
+
+The test project is xUnit v3 with SilverAssertions.
 No opt-in environment variables, no special prep, no network access, no
 device. The suite is fast and is the repository's only guard rail, since
 there is no API surface for a compiler to check.

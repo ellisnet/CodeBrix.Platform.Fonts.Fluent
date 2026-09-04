@@ -13,7 +13,7 @@ TESTS (the only non-package content)
 
     tests/CodeBrix.Platform.Fonts.Fluent.Tests/
 
-An xUnit v3 test project (SilverAssertions, coverlet.collector) that
+An xUnit v3 test project (SilverAssertions) that
 verifies the three shipped files -- the font, the asset marker and the
 buildTransitive .props -- are present, correctly shaped and correctly
 renamed. It ships in the repository only; it is not packed.

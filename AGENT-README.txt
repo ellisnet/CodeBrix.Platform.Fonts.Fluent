@@ -26,7 +26,7 @@ Target framework: .NET 10 or later.
 
 Provenance: the `uno-fluentui-assets.ttf` binary and the packaging shape
 (the `.props` logic and the asset-marker convention) are redistributed from
-the upstream Fluent icon-font package, version 2.8.1, under Apache-2.0. The
+the upstream Fluent icon-font package under Apache-2.0. The
 font file deliberately keeps its original upstream filename; every path in
 this document quotes it verbatim. THIRD-PARTY-NOTICES.txt in this
 repository carries the full attribution.

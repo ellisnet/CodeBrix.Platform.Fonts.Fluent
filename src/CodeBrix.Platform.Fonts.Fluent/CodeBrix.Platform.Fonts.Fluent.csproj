@@ -56,14 +56,14 @@
     <Product>CodeBrix.Platform.Fonts.Fluent</Product>
     <Title>CodeBrix.Platform.Fonts.Fluent</Title>
     <Authors>Jeremy Ellis</Authors>
-    <Description>A .NET 10 redistribution of the Uno Platform Fluent icon font (Windows 11 iconography), packaged for the CodeBrix family. Ships the single uno-fluentui-assets.ttf symbol font plus a Uno-fork .uprimarker asset marker, and a buildTransitive .props file that sets the default symbols font family. A CodeBrix-renamed drop-in equivalent of Uno.Fonts.Fluent 2.8.1, for CodeBrix.Platform-forked Uno applications.</Description>
+    <Description>A .NET 10 redistribution of the Fluent icon font (Windows 11 iconography), packaged for the CodeBrix family. Ships the single uno-fluentui-assets.ttf symbol font plus a CodeBrix .uprimarker asset marker, and a buildTransitive .props file that sets the default symbols font family. Supplies the symbols (icon) font used by SymbolIcon, FontIcon and the SymbolThemeFontFamily theme resource in CodeBrix.Platform applications.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ellisnet/CodeBrix.Platform.Fonts.Fluent</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ellisnet/CodeBrix.Platform.Fonts.Fluent</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>icon-codebrix-128.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Copyright>Copyright (c) 2026 Jeremy Ellis and contributors. Fluent icon font (C) 2015-2023 Uno Platform Inc., distributed under Apache-2.0.</Copyright>
+    <Copyright>Copyright (c) 2026 Jeremy Ellis and contributors</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <IsPackable>true</IsPackable>
